@@ -74,10 +74,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 ---------------------------------------------------------------
+Tutorial:
 
 - https://www.youtube.com/watch?v=EaDMG4amEfk
 - https://www.youtube.com/watch?v=2SaO1Pvah2k
 - https://www.youtube.com/watch?v=-K85GjI5SQ0
+
+Documentation 
+
+- https://docs.aws.amazon.com/amplify/
+- https://aws-amplify.github.io/
+- https://github.com/dabit3/awesome-aws-amplify
 
 --------------------------------------------------------------
 cd dir 
@@ -92,3 +99,9 @@ npm run start
 
 
 Open browser http://localhost:3000/
+
+
+--------------------------------------------------------------
+### Cognito Userpool
+
+
