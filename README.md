@@ -174,5 +174,24 @@ To use the refresh token to get new ID and access tokens with the user pool API,
 
  "App can use the GlobalSignOut API to allow individual users to sign themselves out from all devices. Typically an app would present this option as a choice, such as Sign out from all devices".
 
+
+-------------------------------------------------
+## id_token vs access_token
+
+The id_token is for your application to process, so you can get all the personal details for your user, like their name, age, email address etc. Generally speaking you shouldn't send this token anywhere else as it contains sensitive user data.
+
+The access_token is used to call other 'external' services (and by external I include other AWS services - these are often called over http). It provides service access authorisation for your user without having to include their personal details.
+
+###  Token vs SessionToken vs SyncSessionToken
+
+
+Token: This is a OpendId Connect compliant id token issued by Cognito Identity which asserts the users identity in a signed and verifiable way. Consider this token as a digital identity card which can be used by clients to verify the identity of users. You can refer to cognito API documentation for details on how to obtain this token and this documentation for more details on how to validate this token as a client.
+
+SessionToken: This token is issued by the service as a descriptor of users AWS session along with the temporary AWS credentials. Cognito calls STS on your behalf and returns the temporary credentials returned. When using other AWS resources using the issued temporary credentials, this token should be a part of the passed temporary credentials. Refer to cognito API reference and STS documentation for more details.
+
+SyncSessionToken: Is an identitfier issued by Cognito Sync service after initializing a sync operation. This sync operation is used as a unit for Cognito sync pricing. A sync operation is marked complete when you perform a successful write/update records using this token or this token expires.
+
+
+-------------------------------------------------
 - https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html
 
