@@ -105,4 +105,31 @@ Open browser http://localhost:3000/
 --------------------------------------------------------------
 ### Cognito Userpool
 
+Amazon Cognito user pools implements ID, access, and refresh tokens as defined by the OpenID Connect (OIDC) open standard:
+
+- The ID Token contains claims about the identity of the authenticated user such as name, email, and phone_number.
+
+The ID token is a JSON Web Token (JWT) that contains claims about the identity of the authenticated user such as name, email, and phone_number. You can use this identity information inside your application. The ID token can also be used to authenticate users against your resource servers or server applications. When an ID token is used outside of the application against your web APIs, you must verify the signature of the ID token before you can trust any claims inside the ID token. See Verifying a JSON Web Token.
+
+The ID token expires one hour after the user authenticates
+
+- The Access Token grants access to authorized resources.
+
+
+			{
+				  "sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+				  "aud": "xxxxxxxxxxxxexample",
+				  "email_verified": true,
+				  "token_use": "id",
+				  "auth_time": 1500009400,
+				  "iss": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_example",
+				  "cognito:username": "janedoe",
+				  "exp": 1500013000,
+				  "given_name": "Jane",
+				  "iat": 1500009400,
+				  "email": "janedoe@example.com"
+				  }
+
+
+- The Refresh Token contains the information necessary to obtain a new ID or access
 
