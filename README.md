@@ -113,7 +113,6 @@ The ID token is a JSON Web Token (JWT) that contains claims about the identity o
 
 The ID token expires one hour after the user authenticates
 
-- The Access Token grants access to authorized resources.
 
 
 			{
@@ -131,5 +130,49 @@ The ID token expires one hour after the user authenticates
 				  }
 
 
+- The Access Token grants access to authorized resources.
+
+
+The user pool access token contains claims about the authenticated user, but unlike the ID token, it does not include identity information. The primary purpose of the access token is to authorize API operations in the context of the user in the user pool. For example, you can use the access token to grant your user access to add, change or delete user attributes. The access token can also be used with any of your web APIs to make access control decisions and authorize operations for your users.
+
+The access token is also represented as a JSON Web Token (JWT). The header for the access token will have the same structure as the ID token, but the key ID (kid) will be different because different keys are used to sign ID tokens and access tokens. As with the ID token, you must first verify the signature of the access token in your web APIs before you can trust any of its claims. See Verifying a JSON Web Token.
+
+
+The access token expires one hour after your user successfully authenticates
+
+			
+			{
+				"auth_time": 1500009400,
+				"exp": 1500013000,
+				"iat": 1500009400,
+				"iss": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_example",
+				"scope": "aws.cognito.signin.user.admin",
+				"sub": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+				"token_use": "access",
+				"username": "janedoe@example.com"
+			}
+
+
 - The Refresh Token contains the information necessary to obtain a new ID or access
+
+
+You can use the refresh token to retrieve new ID and access tokens.
+
+By default, the refresh token expires 30 days after your app user signs in to your user pool. When you create an app for your user pool, you can set the app's refresh token expiration (in days) to any value between 1 and 3650.
+
+The Mobile SDK for iOS and the Mobile SDK for Android automatically refresh your ID and access tokens if there is a valid (non-expired) refresh token present, and the ID and access tokens have a minimum remaining validity of 5 minutes. If the refresh token is expired, your app user must reauthenticate by signing in again to your user pool.
+
+Note
+
+The Mobile SDK for Android offers the option to change the minimum validity period of the ID and access tokens to a value between 0 and 30 minutes. See the setRefreshThreshold() method of CognitoIdentityProviderClientConfig in the AWS Mobile SDK for Android API Reference.
+
+Your user's account itself never expires, as long as the user has logged in at least once before the UnusedAccountValidityDays time limit for new accounts.
+
+To use the refresh token to get new ID and access tokens with the user pool API, use the AdminInitiateAuth or InitiateAuth methods. Pass REFRESH_TOKEN_AUTH for the AuthFlow parameter. The authorization parameters, AuthParameters, are a key-value map where the key is "REFRESH_TOKEN" and the value is the actual refresh token. Amazon Cognito responds with new ID and access tokens.
+
+
+
+ "App can use the GlobalSignOut API to allow individual users to sign themselves out from all devices. Typically an app would present this option as a choice, such as Sign out from all devices".
+
+- https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html
 
