@@ -107,7 +107,7 @@ Open browser http://localhost:3000/
 
 Amazon Cognito user pools implements ID, access, and refresh tokens as defined by the OpenID Connect (OIDC) open standard:
 
-- The ID Token contains claims about the identity of the authenticated user such as name, email, and phone_number.
+## - The ID Token contains claims about the identity of the authenticated user such as name, email, and phone_number.
 
 The ID token is a JSON Web Token (JWT) that contains claims about the identity of the authenticated user such as name, email, and phone_number. You can use this identity information inside your application. The ID token can also be used to authenticate users against your resource servers or server applications. When an ID token is used outside of the application against your web APIs, you must verify the signature of the ID token before you can trust any claims inside the ID token. See Verifying a JSON Web Token.
 
@@ -130,7 +130,7 @@ The ID token expires one hour after the user authenticates
 				  }
 
 
-- The Access Token grants access to authorized resources.
+## - The Access Token grants access to authorized resources.
 
 
 The user pool access token contains claims about the authenticated user, but unlike the ID token, it does not include identity information. The primary purpose of the access token is to authorize API operations in the context of the user in the user pool. For example, you can use the access token to grant your user access to add, change or delete user attributes. The access token can also be used with any of your web APIs to make access control decisions and authorize operations for your users.
@@ -153,7 +153,7 @@ The access token expires one hour after your user successfully authenticates
 			}
 
 
-- The Refresh Token contains the information necessary to obtain a new ID or access
+## - The Refresh Token contains the information necessary to obtain a new ID or access
 
 
 You can use the refresh token to retrieve new ID and access tokens.
@@ -192,7 +192,14 @@ The access_token is used to call other 'external' services (and by external I in
 - SyncSessionToken: Is an identitfier issued by Cognito Sync service after initializing a sync operation. This sync operation is used as a unit for Cognito sync pricing. A sync operation is marked complete when you perform a successful write/update records using this token or this token expires.
 
 
--------------------------------------------------
 
 - https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html
+
+-------------------------------------------------
+
+### Synch congnito with RDS 
+
+Lambda Resolvers: https://docs.aws.amazon.com/appsync/latest/devguide/tutorial-lambda-resolvers.html
+
+AppSync Auth with User Pools: https://docs.aws.amazon.com/appsync/latest/devguide/security-authorization-use-cases.html
 
