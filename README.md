@@ -203,3 +203,10 @@ Lambda Resolvers: https://docs.aws.amazon.com/appsync/latest/devguide/tutorial-l
 
 AppSync Auth with User Pools: https://docs.aws.amazon.com/appsync/latest/devguide/security-authorization-use-cases.html
 
+----------------------------------------------
+I AM role with Cognito 
+
+- https://medium.com/@anuradhawick/understanding-aws-cognito-and-iam-roles-af2dfefef996
+- https://aws.amazon.com/blogs/mobile/integrating-amazon-cognito-user-pools-with-api-gateway/
+- 
+
